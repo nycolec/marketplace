@@ -1,0 +1,2 @@
+class SellerMatcher < BaseMatcher
+end
