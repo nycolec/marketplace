@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   namespace :api do
-    namespace :v1, :defaults => { :format => :json } do
+    namespace :v1, defaults: { format: :json } do
       get '/sellers/:seller_id/suggestions', to: 'sellers#suggestions'
-      get '/buyers/:buyer_id/suggestions' , to: 'buyers#suggestions'
+      get '/buyers/:buyer_id/suggestions', to: 'buyers#suggestions'
 
       resources :purchases, only: [:create]
     end

@@ -5,7 +5,7 @@ module Purchases
     include Interactor
 
     def call
-      context.matches = SellerMatcher.new(buyer: context.seller).find_matches
+      context.matches = SellerMatcher.new(seller: context.seller).find_matches
     end
   end
 end

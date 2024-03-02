@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Buyer matcher class returns a list of buyers the a seller might
+# Buyer matcher class returns a list of sellers the buyer might
 # be interested in based on their past purchases
 class BuyerMatcher
   def initialize(buyer:)
@@ -14,7 +14,7 @@ class BuyerMatcher
 
   private
 
-  def has_matching_produce_numbers?(produce1, produce2)
+  def matching_produce_numbers?(produce1, produce2)
     produce1 == produce2
   end
 
@@ -23,8 +23,6 @@ class BuyerMatcher
   end
 
   def find_sellers_for_buyer(purchases)
-    return [] if purchases.empty?
-
     seller_list = []
     seller_cache = {}
     purchases.each_with_index do |purchase, idx|
@@ -32,18 +30,21 @@ class BuyerMatcher
 
       future_idx = purchases[idx + 1]
 
-      next unless has_matching_produce_numbers?(purchase['produce_id'], future_idx['produce_id']) &&
+      next unless matching_produce_numbers?(purchase['produce_id'], future_idx['produce_id']) &&
                   within_14_days?(purchase['date_purchased'].to_date, future_idx['date_purchased'].to_date)
 
       seller = { name: purchase['name'], id: purchase['seller_id'] }
       seller2 = { name: future_idx['name'], id: future_idx['seller_id'] }
-      seller_cache[seller['name']] = idx
-      seller_cache[seller2['name']] = idx + 1
 
       # prevent seller showing up mutliple times in recommendations list
       seller_list << seller unless seller_cache[seller['name']]
       seller_list << seller2
+
+      seller_cache[seller['name']] = idx
+      seller_cache[seller2['name']] = idx + 1
     end
+
+    seller_list
   end
 
   def get_purchases_for_buyer(buyer)

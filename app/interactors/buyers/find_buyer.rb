@@ -9,11 +9,13 @@ module Buyers
     end
 
     def call
-      context.buyer = Buyer.find(context.buyer_id)
-      p 'hi', context.buyer
+      # find_by is good for prevent SQL injection as we use the buyer object later
+      # for finding matches
+      context.buyer = Buyer.find_by(id: context.buyer_id)
+
       # in production scenario dealing with authenticated users, id
       # most likely return 404 - due to security concerns
-      context.fail!(message: 'Buyer not found', status: 403) unless context.buyer.present?
+      context.fail!(error: 'Buyer not found', status: 403) unless context.buyer.present?
     end
   end
 end

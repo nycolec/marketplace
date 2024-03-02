@@ -5,7 +5,6 @@ module Purchases
     include Interactor
 
     def call
-      p '4'
       context.purchase.assign_attributes(
         buyer: context.buyer,
         seller: context.seller,

@@ -6,8 +6,6 @@ module Purchases
 
     def call
       context.matches = BuyerMatcher.new(buyer: context.buyer).find_matches
-
-      p matches
     end
   end
 end
