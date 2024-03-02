@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Instructions for running locally:
 
-Things you may want to cover:
 
-* Ruby version
+Clone repository:
 
-* System dependencies
+    git clone 
 
-* Configuration
+If you don't have postgres installed on your machine(otherwise skip this step):
 
-* Database creation
+    brew install postgresql
 
-* Database initialization
+Install gems:
 
-* How to run the test suite
+    bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+ Database Setup:
 
-* Deployment instructions
+    rails db:create
+    rails db:setup
 
-* ...
+
+***
