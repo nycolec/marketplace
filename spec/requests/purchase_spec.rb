@@ -30,7 +30,8 @@ RSpec.describe 'Purchases', type: :request do
             #  use factory bot to scale
             seller: Seller.create(name: Faker::Name.name).id,
             buyer: Buyer.create(name: Faker::Name.name).id,
-            produce: fruit.produce_type
+            produce: fruit.produce_type,
+            status: :completed
           }
         }
       end
