@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-class GetSellerSuggestions
+class GetSuggestionsForSeller
   include Interactor::Organizer
 
-  # organize
-  # initialize
-  # find produce
-  # set attributes
-  # save
+  organize Sellers::FindSeller, Purchases::FindMatchesForSeller
 end

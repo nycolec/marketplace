@@ -3,9 +3,6 @@
 class CreatePurchase
   include Interactor::Organizer
 
-  # organize
-  # initialize
-  # find produce
-  # set attributes
-  # save
+  organize Purchases::InitializePurchase, Buyers::FindBuyer, Sellers::FindSeller, Produces::FindProduce,
+           Purchases::SetPurchaseAttributes, Purchases::SavePurchase
 end

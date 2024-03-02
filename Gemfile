@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby '3.3.0'
@@ -46,6 +48,8 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'interactor'
+
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'rspec-rails', '~> 6.1.0'
