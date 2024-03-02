@@ -3,9 +3,9 @@
 ## Instructions for running locally:
 
 
-Clone repository:
+Clone repository(below uses Github CLI):
 
-    git clone 
+    gh repo clone nycolec/marketplace
 
 If you don't have postgres installed on your machine(otherwise skip this step):
 
