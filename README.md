@@ -17,7 +17,7 @@ Install gems:
 
  Database Setup:
 
-    rails db:setup
+    bin/rails db:setup
 
 Interact With Buyer Matches with Postman or you favorite API client like so:
 <img width="848" alt="Screenshot 2024-03-01 at 8 49 07 PM" src="https://github.com/nycolec/marketplace/assets/33848032/ff441ddb-46cb-4602-bfb1-824690f26b4e">
