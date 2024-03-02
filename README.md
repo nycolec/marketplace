@@ -17,7 +17,6 @@ Install gems:
 
  Database Setup:
 
-    rails db:create
     rails db:setup
 
 Interact With Buyer Matches with Postman or you favorite API client like so:
