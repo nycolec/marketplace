@@ -3,7 +3,7 @@
 module Api
   module V1
     class SellersController < ApplicationController
-      # GET api/v1/sellers/:id/list_suggestions
+      # GET api/v1/sellers/:id/suggestions
       def suggestions
         result = ::GetSuggestionsForSeller.call(seller_id: params[:seller_id])
 

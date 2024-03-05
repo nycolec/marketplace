@@ -14,8 +14,8 @@ class BuyerMatcher
 
   private
 
-  def matching_produce_numbers?(produce1, produce2)
-    produce1 == produce2
+  def matching_produce_numbers?(purchase1, purchase2)
+    purchase1['produce_id'] == purchase2['produce_id']
   end
 
   def within_14_days?(end_date, start_date)
@@ -28,20 +28,20 @@ class BuyerMatcher
     purchases.each_with_index do |purchase, idx|
       break if idx + 1 == purchases.to_a.length
 
-      future_idx = purchases[idx + 1]
+      future_purchase = purchases[idx + 1]
 
-      next unless matching_produce_numbers?(purchase['produce_id'], future_idx['produce_id']) &&
-                  within_14_days?(purchase['date_purchased'].to_date, future_idx['date_purchased'].to_date)
+      next unless matching_produce_numbers?(purchase, future_purchase) &&
+                  within_14_days?(purchase['date_purchased'].to_date, future_purchase['date_purchased'].to_date)
 
       seller = { name: purchase['name'], id: purchase['seller_id'] }
-      seller2 = { name: future_idx['name'], id: future_idx['seller_id'] }
+      seller2 = { name: future_purchase['name'], id: future_purchase['seller_id'] }
 
       # prevent seller showing up mutliple times in recommendations list
-      seller_list << seller unless seller_cache[seller['name']]
-      seller_list << seller2
+      seller_list << seller unless seller_cache[seller['seller_id']]
+      seller_cache[seller['seller_id']] = idx
 
-      seller_cache[seller['name']] = idx
-      seller_cache[seller2['name']] = idx + 1
+      seller_list << seller2 unless seller_cache[seller2['seller_id']]
+      seller_cache[seller2['seller_id']] = idx + 1
     end
 
     seller_list

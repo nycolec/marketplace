@@ -54,6 +54,8 @@ gem 'active_model_serializers'
 group :development, :test do
   gem 'rspec-rails', '~> 6.1.0'
 
+  gem 'factory_bot_rails'
+
   gem 'faker'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
