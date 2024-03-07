@@ -5,9 +5,9 @@ module Produces
     include Interactor
 
     def call
-      context.produce = Produce.find_by!(produce_type: context.params[:produce])
+      context.produce = Produce.find_by(produce_type: context.params[:produce])
 
-      context.fail!(message: 'Produce type not found', status: 422) unless context.produce.present?
+      context.fail!(error: 'Produce type not found', status: 404) unless context.produce.present?
     end
   end
 end
