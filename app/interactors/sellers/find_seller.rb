@@ -11,9 +11,7 @@ module Sellers
     def call
       context.seller = Seller.find_by(id: context.seller_id)
 
-      # in production scenario dealing with authenticated users, id
-      # most likely return 404 - due to security concerns
-      context.fail!(error: 'Seller not found', status: 403) unless context.seller.present?
+      context.fail!(error: 'Seller not found', status: 404) unless context.seller.present?
     end
   end
 end

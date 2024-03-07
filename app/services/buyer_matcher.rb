@@ -37,11 +37,11 @@ class BuyerMatcher
       seller2 = { name: future_purchase['name'], id: future_purchase['seller_id'] }
 
       # prevent seller showing up mutliple times in recommendations list
-      seller_list << seller unless seller_cache[seller['seller_id']]
-      seller_cache[seller['seller_id']] = idx
+      seller_list << seller unless seller_cache[seller[:id]]
+      seller_cache[seller[:id]] = idx
 
-      seller_list << seller2 unless seller_cache[seller2['seller_id']]
-      seller_cache[seller2['seller_id']] = idx + 1
+      seller_list << seller2 unless seller_cache[seller2[:id]]
+      seller_cache[seller2[:id]] = idx + 1
     end
 
     seller_list
