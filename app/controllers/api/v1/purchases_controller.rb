@@ -3,6 +3,8 @@
 module Api
   module V1
     class PurchasesController < ApplicationController
+      skip_before_action :verify_authenticity_token
+
       # POST /api/v1/purchases
       def create
         result = ::CreatePurchase.call(params: purchase_params)
